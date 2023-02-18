@@ -9,6 +9,7 @@ class Principal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Material App',
       theme: ThemeData.dark(),
       home: Scaffold(
@@ -26,7 +27,7 @@ class Principal extends StatelessWidget {
                   height: 100,
                   child: CircleAvatar(
                     backgroundImage: NetworkImage(
-                        'https://picsum.photos/seed/picsum/200/300'),
+                        'https://picsum.photos/333'),
                     backgroundColor: Colors.red,
                   )),
               const SizedBox(

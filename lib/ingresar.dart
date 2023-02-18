@@ -13,6 +13,7 @@ class _IngresarState extends State<Ingresar> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Ingresar',
       home: Scaffold(
         appBar: AppBar(),

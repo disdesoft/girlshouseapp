@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682669041684",
+    "project_id": "girlshouseapp",
+    "storage_bucket": "girlshouseapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682669041684:android:8fb3de7993187833dadf01",
+        "android_client_info": {
+          "package_name": "com.example.girls_house_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682669041684-i1c63p3hqvghl0l30nh1rh4ss84hl5m0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9cWzfufM0YZJZrWnKKuMZ83SDo4o8EYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682669041684-i1c63p3hqvghl0l30nh1rh4ss84hl5m0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
