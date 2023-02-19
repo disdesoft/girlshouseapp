@@ -13,20 +13,29 @@ class _RecPassState extends State<RecPass> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
       title: 'Recuperar Contraseña',
       home: Scaffold(
-        appBar: AppBar(),
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+        ),
         body: SingleChildScrollView(
           child: Center(
               child: Column(
             children: [
+              const Text(
+                    'Recuperar contraseña',
+                    style: TextStyle(fontSize: 26, color: Colors.white),
+                  ),
               const SizedBox(
                 width: 100,
                 height: 100,
               ),
               const SizedBox(
-                  width: 100,
-                  height: 100,
+                  width: 150,
+                  height: 150,
                   child: CircleAvatar(
                     backgroundImage: NetworkImage(
                         'https://picsum.photos/seed/picsum/200/300'),
@@ -35,10 +44,7 @@ class _RecPassState extends State<RecPass> {
                   const SizedBox(
                     height: 50,
                   ),
-              const Text(
-                    'Recuperar contraseña',
-                    style: TextStyle(fontSize: 30),
-                  ),
+              
               const Padding(
                 padding: EdgeInsets.all(20.0),
                 child: Column(
@@ -46,18 +52,33 @@ class _RecPassState extends State<RecPass> {
                     TextField(
                       obscureText: true,
                       decoration: InputDecoration(
+                        
                         border: OutlineInputBorder(),
                         labelText: 'correo electronico',
+                        focusColor: Colors.white,
+                        hoverColor: Colors.white,
+                        iconColor: Colors.white,
                       ),
                     ),
                   ],
                 ),
               ),
-              ElevatedButton(
+             OutlinedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/IngCorreo');
+                  Navigator.pushNamed(context, '/Home');
                 },
-                child: const Text('Enviar'),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  disabledForegroundColor: Colors.white.withOpacity(0.5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                ),
+                child: const Text(
+                  'Enviar',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
               ),
             ],
           )),

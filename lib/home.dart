@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:girls_house_app/catalogo.dart';
+import 'package:girls_house_app/favoritas.dart';
+import 'package:girls_house_app/perfil_servidora.dart';
 
 void main() => runApp(const Home());
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   static const String _title = 'Flutter Code Sample';
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: _title,
+      title: Home._title,
       home: MyStatefulWidget(),
     );
   }
@@ -28,17 +35,20 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(
+        fontSize: 20,
+        fontWeight:
+        FontWeight.bold,
+        color: Colors.white,
+        );
   static const List<Widget> _widgetOptions = <Widget>[
     Catalogo(),
-    Text(
-      'Favoritas',
-      style: optionStyle,
-    ),
+    Favoritas(),
     Text(
       'Bar',
       style: optionStyle,
     ),
+    PerfilServidora(),
   ];
 
   void _onItemTapped(int index) {
@@ -50,16 +60,27 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         centerTitle: true,
-        title: const Text('Girls House app'),
+        title: const Text('Girls House app', 
+        style: TextStyle(color: Colors.white30),),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        unselectedItemColor: Colors.grey[800],
+        iconSize: 16,
+        selectedFontSize: 12,
+        unselectedFontSize: 12,
+        
+        
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
+            backgroundColor: Colors.black,
             icon: Icon(Icons.home),
             label: 'Home',
           ),
@@ -71,9 +92,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             icon: Icon(Icons.local_drink),
             label: 'Bar',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_2_outlined),
+            label: 'Perfil',
+          ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.pink[800],
+        selectedItemColor: Colors.white,
         onTap: _onItemTapped,
       ),
     );

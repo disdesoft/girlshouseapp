@@ -13,13 +13,18 @@ class _AdminState extends State<Admin> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Ingresar',
       home: Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          title: const Text('Admin'),
+          backgroundColor: Colors.black,
         ),
         body: const Center(
-          child: Text('Admin'),
+          child: Text(
+            'Admin',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
       ),
     );

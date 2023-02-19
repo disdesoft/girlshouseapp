@@ -15,11 +15,16 @@ class _RegistrarseState extends State<Registrarse> {
     return MaterialApp(
       title: 'Registrarse',
       home: Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
+          backgroundColor: Colors.black,
           title: const Text('Registrarse'),
         ),
         body: const Center(
-          child: Text('Registrarse'),
+          child: Text(
+            'Registrarse',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
       ),
     );

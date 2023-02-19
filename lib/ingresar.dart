@@ -15,50 +15,98 @@ class _IngresarState extends State<Ingresar> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Ingresar',
+      theme: ThemeData.dark(),
       home: Scaffold(
-        appBar: AppBar(),
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+        ),
         body: SingleChildScrollView(
           child: Center(
               child: Column(
             children: [
-              const SizedBox(
-                width: 100,
-                height: 100,
+              const Center(
+                child: Text(
+                'Girls House app',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               ),
               const SizedBox(
-                  width: 100,
-                  height: 100,
+                width: 50,
+                height: 50,
+              ),
+              //avatar
+              const SizedBox(
+                  width: 150,
+                  height: 150,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        'https://picsum.photos/seed/picsum/200/300'),
+                    backgroundImage: NetworkImage('https://picsum.photos/333'),
                     backgroundColor: Colors.red,
                   )),
               const SizedBox(
-                width: 100,
-                height: 100,
+                height: 120,
               ),
-              ElevatedButton(
+              //Goole Button
+              OutlinedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/Home');
                 },
-                child: const Text('Google'),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  disabledForegroundColor: Colors.white.withOpacity(0.5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                ),
+                child: const Text(
+                  'Google',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
               ),
-              ElevatedButton(
-                  onPressed: () {
-                     Navigator.pushNamed(context, '/Home');
-                  },
-                  child: const Text('Facebook')),
-                  ElevatedButton(
+              //Facebook Button
+              OutlinedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/Home');
+                },
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  disabledForegroundColor: Colors.white.withOpacity(0.5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                ),
+                child: const Text(
+                  'Facebook',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              //correo Button
+              OutlinedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/IngCorreo');
                 },
-                child: const Text('Correo electrónico'),
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  disabledForegroundColor: Colors.white.withOpacity(0.5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                ),
+                child: const Text(
+                  'e-mail',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
               ),
               const SizedBox(
-                width: 100,
-                height: 100,
+                height: 120,
               ),
-              const Text('Todos los derechos reservados'),
               
             ],
           )),

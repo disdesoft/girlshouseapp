@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:girls_house_app/admin.dart';
+import 'package:girls_house_app/favoritas.dart';
 import 'package:girls_house_app/home.dart';
 import 'package:girls_house_app/ing_correo.dart';
 import 'package:girls_house_app/ingresar.dart';
+import 'package:girls_house_app/perfil_servidora.dart';
 import 'package:girls_house_app/principal.dart';
 import 'package:girls_house_app/rec_pass.dart';
 import 'package:girls_house_app/registrarse.dart';
+
 
 //importaciones firebase
 import 'package:firebase_core/firebase_core.dart';
@@ -42,6 +45,8 @@ class _MyAppState extends State<MyApp> {
         '/IngCorreo': (context) => const IngEmail(),
         '/Home': (context) => const Home(),
         '/RecPass': (context) => const RecPass(),
+        '/PerfilServidora': (context) => const PerfilServidora(),
+        '/Favoritas': (context) => const Favoritas(),
       },
     );
   }
