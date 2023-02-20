@@ -12,21 +12,19 @@ class PerfilServidora extends StatefulWidget {
 
 class _PerfilServidoraState extends State<PerfilServidora> {
   final imageProfile =
-      "https://media.licdn.com/dms/image/C5603AQEdgNbuwGKaQQ/profile-displayphoto-shrink_800_800/0/1662670523071?e=2147483647&v=beta&t=k3bU93M4I_IWdTL9Z3tuzQgQUQr_P-nhQVEXR0rVkBk";
+      "assets/girls/bar.jpeg";
   
   List<String> imagePost = [
-    'https://picsum.photos/333',
-    'https://picsum.photos/332',
-    'https://picsum.photos/331',
-    'https://picsum.photos/330',
-    'https://picsum.photos/329',
-    'https://picsum.photos/328',
-    'https://picsum.photos/367',
-    'https://picsum.photos/366',
-    'https://picsum.photos/365',
-    'https://picsum.photos/364',
-    'https://picsum.photos/363',
-    'https://picsum.photos/362',
+    'assets/girls/bar1.jpeg',
+    'assets/girls/bar2.jpeg',
+    'assets/girls/bar3.jpeg',
+    'assets/girls/bar4.jpeg',
+    'assets/girls/bar.jpeg',
+    'assets/girls/bar6.jpeg',
+    'assets/girls/bar7.jpeg',
+    'assets/girls/bar8.jpeg',
+    'assets/girls/bar9.jpeg',
+    'assets/girls/bar10.jpeg',
   ];
 
   @override
@@ -43,8 +41,9 @@ class _PerfilServidoraState extends State<PerfilServidora> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
-                radius: 56,
-                backgroundImage: NetworkImage(imageProfile),
+                radius: 50,
+                backgroundImage: AssetImage(imageProfile),
+                backgroundColor: const Color.fromARGB(255, 255, 210, 210),
               ),
               const SizedBox(
                 height: 16,
@@ -53,8 +52,8 @@ class _PerfilServidoraState extends State<PerfilServidora> {
                 'Karol Cruz',
                 style: TextStyle(
                   color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
                 ),
               ),
               const SizedBox(
@@ -70,55 +69,62 @@ class _PerfilServidoraState extends State<PerfilServidora> {
                       Text(
                         'Publicaciones',
                         style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 13,
                           color: Colors.white,
                         ),
                       ),
                       Text(
                         '8',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 11,
                           color: Colors.grey,
                         ),
                       ),
                     ],
                   )),
+                  Divider(
+                    color: Colors.white,
+                    thickness: 60,
+                  ),
                   Expanded(
                       child: Column(
                     children: [
                       Text(
                         'Seguidores',
                         style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 13,
                           color: Colors.white,
                         ),
                       ),
                       Text(
                         '275k',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 11,
                           color: Colors.grey,
                         ),
                       ),
                     ],
                   )),
+                  Divider(
+                    color: Colors.white,
+                  ),
                   Expanded(
                       child: Column(
                     children: [
                       Text(
                         'Seguidos',
                         style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 13,
                           color: Colors.white,
                         ),
                       ),
                       Text(
                         '100',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 11,
                           color: Colors.grey,
                         ),
                       ),
@@ -138,17 +144,11 @@ class _PerfilServidoraState extends State<PerfilServidora> {
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Colors.white,
                       shadowColor: Colors.white,
-                      backgroundColor: Colors.white,
                     ),
-                    child: const Text(
-                      'Seguir',
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
+                    child: const Icon(Icons.favorite, color: Color.fromARGB(255, 255, 210, 210),)
                   ),
                   const SizedBox(
-                    width: 20,
+                    width: 10,
                   ),
                   OutlinedButton(
                     onPressed: () {},
@@ -156,7 +156,7 @@ class _PerfilServidoraState extends State<PerfilServidora> {
                       foregroundColor: Colors.white,
                       shadowColor: Colors.white,
                     ),
-                    child: const Text('Mensaje'),
+                    child: const Icon(Icons.phone, color: Color.fromARGB(255, 255, 210, 210),),
                   )
                 ],
               ),
@@ -183,7 +183,10 @@ class _PerfilServidoraState extends State<PerfilServidora> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
                             image: DecorationImage(
-                                image: NetworkImage(imagePost[index]))),
+                                image: AssetImage(imagePost[index]),
+                                fit: BoxFit.cover,
+                                ),
+                                ),
                       );
                     }),
               ))

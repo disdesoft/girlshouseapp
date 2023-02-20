@@ -65,7 +65,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         backgroundColor: Colors.black,
         centerTitle: true,
         title: const Text('Girls House app', 
-        style: TextStyle(color: Colors.white30),),
+        style: TextStyle(color: Color.fromARGB(255, 255, 210, 210),
+        fontSize: 16,
+        ),),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

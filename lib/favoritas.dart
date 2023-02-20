@@ -14,9 +14,9 @@ class Favoritas extends StatefulWidget {
 
 class _FavoritasState extends State<Favoritas> {
 List<String> imagePost = [
-    'https://picsum.photos/734',
-    'https://picsum.photos/735',
-    'https://picsum.photos/736',
+    'assets/girls/muj11.jpg',
+    'assets/girls/muj6.jpg',
+    'assets/girls/muj9.jpg',
     
   ];
 
@@ -36,7 +36,7 @@ List<String> imagePost = [
               Expanded(
                   child: Center(
                 child: GridView.builder(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 5),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -44,11 +44,14 @@ List<String> imagePost = [
                     itemCount: imagePost.length,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 2),
+                        margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8.0),
                             image: DecorationImage(
-                                image: NetworkImage(imagePost[index]))),
+                                image: AssetImage(imagePost[index]),
+                                fit: BoxFit.cover,
+                                ),
+                                ),
                       );
                     }),
               ))

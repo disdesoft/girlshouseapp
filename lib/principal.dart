@@ -37,16 +37,16 @@ class Principal extends StatelessWidget {
               ),
               ),
               const SizedBox(
-                width: 50,
-                height: 50,
+                width: 70,
+                height: 70,
               ),
               //avatar
               const SizedBox(
-                  width: 150,
-                  height: 150,
+                  width: 120,
+                  height: 120,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage('https://picsum.photos/333'),
-                    backgroundColor: Colors.red,
+                    backgroundImage: AssetImage('assets/logogirl.png'),
+                    backgroundColor: Color.fromARGB(255, 255, 210, 210),
                   )),
               const SizedBox(
                 height: 120,
@@ -64,7 +64,7 @@ class Principal extends StatelessWidget {
                 child: const Text(
                   'Ingresar',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                   ),
                 ),
               ),
