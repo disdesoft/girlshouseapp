@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:girls_house_app/catalogo.dart';
+
+
 import 'package:girls_house_app/favoritas.dart';
-import 'package:girls_house_app/perfil_servidora.dart';
 
 void main() => runApp(const Home());
 
@@ -48,7 +49,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       'Bar',
       style: optionStyle,
     ),
-    PerfilServidora(),
   ];
 
   void _onItemTapped(int index) {
@@ -93,10 +93,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.local_drink),
             label: 'Bar',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_2_outlined),
-            label: 'Perfil',
           ),
         ],
         currentIndex: _selectedIndex,

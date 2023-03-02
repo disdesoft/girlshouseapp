@@ -15,12 +15,6 @@ class Principal extends StatelessWidget {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black,
-          // title: const Text('Girls House app'),
-          // titleTextStyle: const TextStyle(
-          //   color: Colors.white,
-          //   fontSize: 22,
-          //   fontWeight: FontWeight.w600,
-          //   ),
         ),
         body: SingleChildScrollView(
           child: Center(

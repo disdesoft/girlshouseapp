@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:girls_house_app/ProfileCatalogScreen.dart';
 import 'package:girls_house_app/admin.dart';
 import 'package:girls_house_app/favoritas.dart';
 import 'package:girls_house_app/home.dart';
@@ -8,18 +9,26 @@ import 'package:girls_house_app/perfil_servidora.dart';
 import 'package:girls_house_app/principal.dart';
 import 'package:girls_house_app/rec_pass.dart';
 import 'package:girls_house_app/registrarse.dart';
+import 'package:flutter/services.dart';
 
 //importaciones firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
-  
+//inicializamos firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+//evita que la aplicacion gire
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) async {
+
   runApp(const MyApp());
+      });
 }
 
 class MyApp extends StatefulWidget {
@@ -47,6 +56,7 @@ class _MyAppState extends State<MyApp> {
         '/RecPass': (context) => const RecPass(),
         '/PerfilServidora': (context) => const PerfilServidora(),
         '/Favoritas': (context) => const Favoritas(),
+        '/profileCatalog': (context) => const ProfileCatalogScreen(),
       },
     );
   }
