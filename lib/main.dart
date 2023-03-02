@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:girls_house_app/ProfileCatalogScreen.dart';
 import 'package:girls_house_app/admin.dart';
 import 'package:girls_house_app/favoritas.dart';
 import 'package:girls_house_app/home.dart';
 import 'package:girls_house_app/ing_correo.dart';
 import 'package:girls_house_app/ingresar.dart';
-import 'package:girls_house_app/perfil_servidora.dart';
 import 'package:girls_house_app/principal.dart';
 import 'package:girls_house_app/rec_pass.dart';
 import 'package:girls_house_app/registrarse.dart';
@@ -26,9 +24,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) async {
-
-  runApp(const MyApp());
-      });
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatefulWidget {
@@ -48,15 +45,13 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         '/': (context) => const Principal(),
-        '/Ingresar': (context) => const Ingresar(),
+        '/Ingresar': (context) => Ingresar(),
         '/Registrarse': (context) => const Registrarse(),
         '/Admin': (context) => const Admin(),
         '/IngCorreo': (context) => const IngEmail(),
         '/Home': (context) => const Home(),
         '/RecPass': (context) => const RecPass(),
-        '/PerfilServidora': (context) => const PerfilServidora(),
         '/Favoritas': (context) => const Favoritas(),
-        '/profileCatalog': (context) => const ProfileCatalogScreen(),
       },
     );
   }

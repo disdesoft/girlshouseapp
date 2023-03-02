@@ -14,22 +14,20 @@ class Principal extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: Colors.black,
+          title: const Text('Girls House app',
+          style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
         ),
         body: SingleChildScrollView(
           child: Center(
               child: Column(
             children: [
-              const Center(
-                child: Text(
-                'Girls House app',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              ),
               const SizedBox(
                 width: 70,
                 height: 70,

@@ -1,116 +1,73 @@
 import 'package:flutter/material.dart';
-
-void main() => runApp(const Ingresar());
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Ingresar extends StatefulWidget {
-  const Ingresar({super.key});
-
   @override
-  State<Ingresar> createState() => _IngresarState();
+  _IngresarState createState() => _IngresarState();
 }
 
 class _IngresarState extends State<Ingresar> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
+  bool _isLoading = false;
+
+  Future<UserCredential?> _signInWithGoogle() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      if (googleUser != null) {
+        final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+        final OAuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
+        final UserCredential userCredential = await _auth.signInWithCredential(credential);
+        return userCredential;
+      }
+    } catch (e) {
+      print('Error al autenticar con Google: $e');
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Ingresar',
-      theme: ThemeData.dark(),
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-        ),
-        body: SingleChildScrollView(
-          child: Center(
-              child: Column(
-            children: [
-              const Center(
-                child: Text(
-                'Girls House app',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              ),
-              const SizedBox(
-                width: 70,
-                height: 70,
-              ),
-              //avatar
-              const SizedBox(
-                  width: 120,
-                  height: 120,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/logogirl.png'),
-                    backgroundColor: Color.fromARGB(255, 255, 210, 210),
-                  )),
-              const SizedBox(
-                height: 120,
-              ),
-              //Goole Button
-              OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/Home');
-                },
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  disabledForegroundColor: Colors.white.withOpacity(0.5),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                ),
-                child: const Text(
-                  'Google',
-                  style: TextStyle(
-                    fontSize: 20,
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Ingresar'),
+      ),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 200,
+          ),
+          Center(
+            child: _isLoading
+                ? const CircularProgressIndicator()
+                : ElevatedButton(
+                    onPressed: () async {
+                      UserCredential? userCredential = await _signInWithGoogle();
+                      if (userCredential != null) {
+                        // El usuario ha iniciado sesión correctamente
+                      }
+                    },
+                    child: const Text('Iniciar sesión con Google'),
                   ),
-                ),
-              ),
-              //Facebook Button
-              OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/Home');
-                },
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  disabledForegroundColor: Colors.white.withOpacity(0.5),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                ),
-                child: const Text(
-                  'Facebook',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-              //correo Button
-              OutlinedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/IngCorreo');
-                },
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  disabledForegroundColor: Colors.white.withOpacity(0.5),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                ),
-                child: const Text(
-                  'e-mail',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 120,
-              ),
-              
-            ],
-          )),
-        ),
+          ),
+          OutlinedButton(onPressed: (){
+            Navigator.pushNamed(context, '/Home');
+          }, child: const Text('Ingresar como invitado', style: TextStyle(color: Colors.white),) )
+        ],
       ),
     );
   }

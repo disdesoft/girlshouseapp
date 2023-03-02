@@ -8,14 +8,13 @@ class ProfileDetailsScreen extends StatelessWidget {
   final String imageUrl;
   final String phone;
 
-  const ProfileDetailsScreen(
-      {Key? key,
-      required this.name,
-      required this.description,
-      required this.imageUrl,
-      required this.phone,
-      })
-      : super(key: key);
+  const ProfileDetailsScreen({
+    Key? key,
+    required this.name,
+    required this.description,
+    required this.imageUrl,
+    required this.phone,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +26,16 @@ class ProfileDetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             CircleAvatar(
-              radius: 50,
-              backgroundImage: NetworkImage(imageUrl),
-              backgroundColor: const Color.fromARGB(255, 255, 210, 210),
+              radius: 51,
+              backgroundColor: Colors.white,
+              child: CircleAvatar(
+                radius: 50,
+                backgroundImage: NetworkImage(imageUrl),
+                backgroundColor: const Color.fromARGB(255, 255, 210, 210),
+              ),
             ),
             const SizedBox(
-              height: 16,
+              height: 10,
             ),
             Text(
               name,
@@ -43,7 +46,19 @@ class ProfileDetailsScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 12,
+              height: 8,
+            ),
+            Text(
+              description,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontWeight: FontWeight.w300,
+                fontSize: 12,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(
+              height: 8,
             ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -53,15 +68,15 @@ class ProfileDetailsScreen extends StatelessWidget {
                     child: Column(
                   children: [
                     Text(
-                      'Publicaciones',
+                      'Servicio',
                       style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 13,
+                        fontWeight: FontWeight.w200,
+                        fontSize: 12,
                         color: Colors.white,
                       ),
                     ),
                     Text(
-                      '8',
+                      '100k',
                       style: TextStyle(
                         fontSize: 11,
                         color: Colors.grey,
@@ -69,57 +84,10 @@ class ProfileDetailsScreen extends StatelessWidget {
                     ),
                   ],
                 )),
-                Divider(
-                  color: Colors.white,
-                  thickness: 60,
-                ),
-                Expanded(
-                    child: Column(
-                  children: [
-                    Text(
-                      'Seguidores',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 13,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      '275k',
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                )),
-                Divider(
-                  color: Colors.white,
-                ),
-                Expanded(
-                    child: Column(
-                  children: [
-                    Text(
-                      'Seguidos',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 13,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      '100',
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ))
               ],
             ),
             const SizedBox(
-              height: 10,
+              height: 2,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -130,36 +98,38 @@ class ProfileDetailsScreen extends StatelessWidget {
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Colors.white,
                       shadowColor: Colors.white,
+                      side: const BorderSide(width: 1, color: Color.fromARGB(255, 255, 210, 210)),
                     ),
                     child: const Icon(
                       Icons.favorite,
                       color: Color.fromARGB(255, 255, 210, 210),
+                      size: 18,
                     )),
                 const SizedBox(
-                  width: 10,
+                  width: 5,
                 ),
                 OutlinedButton(
                   onPressed: () {
-
                     _makePhoneCall(phone);
-
                   },
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.white,
                     shadowColor: Colors.white,
+                    side: const BorderSide(width: 1, color: Colors.green),
                   ),
                   child: const Icon(
                     Icons.phone,
-                    color: Color.fromARGB(255, 255, 210, 210),
+                    color: Colors.green,
+                    size: 18,
                   ),
                 )
               ],
             ),
             const Padding(
-              padding: EdgeInsets.all(4.0),
+              padding: EdgeInsets.all(1.0),
               child: Divider(
-                height: 10,
-                thickness: 0.8,
+                height: 5,
+                thickness: 0.6,
                 //color: Colors.white,
               ),
             ),
@@ -188,8 +158,8 @@ class ProfileDetailsScreen extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) =>
-                                        FullScreenImage(imageUrl: profile['imageUrl']),
+                                    builder: (_) => FullScreenImage(
+                                        imageUrl: profile['imageUrl']),
                                   ));
                             },
                             child: Card(
@@ -235,10 +205,17 @@ class FullScreenImage extends StatelessWidget {
             child: Column(
               children: [
                 Image.network(imageUrl),
-                const SizedBox(height: 50,),
-                OutlinedButton(onPressed: () {
-                  Navigator.pop(context);
-                }, child: const Text('Atras', style: TextStyle(color: Colors.white),))
+                const SizedBox(
+                  height: 50,
+                ),
+                OutlinedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'Atras',
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
             ),
           ),
@@ -247,7 +224,6 @@ class FullScreenImage extends StatelessWidget {
     );
   }
 }
-
 
 _makePhoneCall(String phone) async {
   String url = phone;
