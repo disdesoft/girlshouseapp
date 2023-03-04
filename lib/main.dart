@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 
 //importaciones firebase
 import 'package:firebase_core/firebase_core.dart';
+import 'package:girlshouse/reg.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -43,7 +44,8 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         '/': (context) => const Principal(),
-        '/Ingresar': (context) => const RegisterPage(),
+        '/Ingresar': (context) => const Ingresar(),
+        '/Registrarse': (context) => const RegisterPage(),
         '/Admin': (context) => const Admin(),
         '/Home': (context) => const Home(),
         '/RecPass': (context) => const RecPass(),

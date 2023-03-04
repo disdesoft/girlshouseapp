@@ -67,6 +67,23 @@ class Principal extends StatelessWidget {
                     ),
                   ),
                 ),
+                OutlinedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Registrarse');
+                  },
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    disabledForegroundColor: Colors.white.withOpacity(0.5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  ),
+                  child: const Text(
+                    'Registrarse',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
         
                 const SizedBox(
                   height: 200,
