@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:girls_house_app/admin.dart';
-import 'package:girls_house_app/favoritas.dart';
-import 'package:girls_house_app/home.dart';
-import 'package:girls_house_app/ing_correo.dart';
-import 'package:girls_house_app/ingresar.dart';
-import 'package:girls_house_app/principal.dart';
-import 'package:girls_house_app/rec_pass.dart';
-import 'package:girls_house_app/registrarse.dart';
+import 'package:girlshouse/admin.dart';
+import 'package:girlshouse/favoritas.dart';
+import 'package:girlshouse/home.dart';
+import 'package:girlshouse/ing_correo.dart';
+import 'package:girlshouse/ingresar.dart';
+import 'package:girlshouse/principal.dart';
+import 'package:girlshouse/rec_pass.dart';
 import 'package:flutter/services.dart';
 
 //importaciones firebase
@@ -45,8 +44,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         '/': (context) => const Principal(),
-        '/Ingresar': (context) => Ingresar(),
-        '/Registrarse': (context) => const Registrarse(),
+        '/Ingresar': (context) => const RegisterPage(),
         '/Admin': (context) => const Admin(),
         '/IngCorreo': (context) => const IngEmail(),
         '/Home': (context) => const Home(),

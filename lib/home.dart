@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:girls_house_app/catalogo.dart';
-
-
-import 'package:girls_house_app/favoritas.dart';
+import 'package:girlshouse/bar.dart';
+import 'package:girlshouse/catalogo.dart';
+import 'package:girlshouse/favoritas.dart';
 
 void main() => runApp(const Home());
 
@@ -45,10 +44,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const List<Widget> _widgetOptions = <Widget>[
     Catalogo(),
     Favoritas(),
-    Text(
-      'Bar',
-      style: optionStyle,
-    ),
+    Bar()
   ];
 
   void _onItemTapped(int index) {
@@ -69,11 +65,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         fontSize: 16,
         ),),
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: Stack(
+        children: [Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
+      ]),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.black.withOpacity(0.5),
         unselectedItemColor: Colors.grey[800],
         iconSize: 16,
         selectedFontSize: 12,
