@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:girlshouse/admin.dart';
 import 'package:girlshouse/favoritas.dart';
 import 'package:girlshouse/home.dart';
-import 'package:girlshouse/ing_correo.dart';
 import 'package:girlshouse/ingresar.dart';
 import 'package:girlshouse/principal.dart';
 import 'package:girlshouse/rec_pass.dart';
@@ -46,7 +45,6 @@ class _MyAppState extends State<MyApp> {
         '/': (context) => const Principal(),
         '/Ingresar': (context) => const RegisterPage(),
         '/Admin': (context) => const Admin(),
-        '/IngCorreo': (context) => const IngEmail(),
         '/Home': (context) => const Home(),
         '/RecPass': (context) => const RecPass(),
         '/Favoritas': (context) => const Favoritas(),

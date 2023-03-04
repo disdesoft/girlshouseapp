@@ -74,7 +74,7 @@ class Principal extends StatelessWidget {
                 const Text('Todos los derechos reservados'),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/Admin');
+                    Navigator.pushNamed(context, '/Home');
                   },
                   child: const Text("Fabian Valero", style: TextStyle(
                     fontSize: 8,
