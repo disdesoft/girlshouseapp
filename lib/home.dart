@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:girlshouse/bar.dart';
 import 'package:girlshouse/catalogo.dart';
 import 'package:girlshouse/favoritas.dart';
@@ -34,15 +35,12 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.bold,
-    color: Colors.white,
-  );
+  bool showWillPopScope = true;
+
   static const List<Widget> _widgetOptions = <Widget>[
     Catalogo(),
     Favoritas(),
-    Bar()
+    Bar(),
   ];
 
   void _onItemTapped(int index) {
@@ -52,74 +50,96 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   @override
+  void dispose() {
+    showWillPopScope = false;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     //REVISAR
-    return WillPopScope(
-      onWillPop: () async {
-        return await showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                title: const Text('¿Salir de la aplicación?'),
-                content: const Text(
-                    '¿Estás seguro de que quieres salir de la aplicación?'),
-                actions: <Widget>[
-                  OutlinedButton(
-                    onPressed: () => Navigator.of(context).pop(false),
-                    child: const Text('No'),
-                  ),
-                  OutlinedButton(
-                    onPressed: () => Navigator.of(context).pop(true),
-                    child: const Text('Sí'),
-                  ),
-                ],
-              ),
-            ) ??
-            false;
-      },
-      child: Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          centerTitle: true,
-          title: const Text(
-            'Girls House app',
-            style: TextStyle(
-              color: Color.fromARGB(255, 255, 210, 210),
-              fontSize: 16,
-            ),
+    // return WillPopScope(
+    //   onWillPop: () async {
+    //     return (await showDialog(
+    //           context: context,
+    //           builder: (context) => AlertDialog(
+    //             backgroundColor:
+    //                 const Color.fromARGB(255, 255, 210, 210).withOpacity(0.7),
+    //             title: const Text(
+    //               '¿Salir de la aplicación?',
+    //               style: TextStyle(color: Colors.white),
+    //             ),
+    //             content: const Text(
+    //               '¿Estás seguro de que quieres salir de la aplicación?',
+    //               style: TextStyle(color: Colors.white),
+    //             ),
+    //             actions: <Widget>[
+    //               OutlinedButton(
+    //                 onPressed: () => Navigator.of(context).pop(false),
+    //                 child: const Text(
+    //                   'No',
+    //                   style: TextStyle(color: Colors.white),
+    //                 ),
+    //               ),
+    //               OutlinedButton(
+    //                 onPressed: () => SystemNavigator.pop(),
+    //                 child: const Text(
+    //                   'Sí',
+    //                   style: TextStyle(color: Colors.white),
+    //                 ),
+    //               ),
+    //             ],
+    //           ),
+    //         )) ??
+    //         false;
+    //   },
+    // child:
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: const Text(
+          'Girls House app',
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 210, 210),
+            fontSize: 16,
           ),
-        ),
-        body: Stack(children: [
-          Center(
-            child: _widgetOptions.elementAt(_selectedIndex),
-          ),
-        ]),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.black.withOpacity(0.5),
-          unselectedItemColor: Colors.grey[800],
-          iconSize: 16,
-          selectedFontSize: 12,
-          unselectedFontSize: 12,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              backgroundColor: Colors.black,
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.girl),
-              label: 'Favoritas',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.local_drink),
-              label: 'Bar',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.white,
-          onTap: _onItemTapped,
         ),
       ),
+      body: Stack(children: [
+        Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
+      ]),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black.withOpacity(0.5),
+        unselectedItemColor: Colors.grey[800],
+        iconSize: 16,
+        selectedFontSize: 12,
+        unselectedFontSize: 12,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            backgroundColor: Colors.black,
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.girl),
+            label: 'Favoritas',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_drink),
+            label: 'Bar',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.white,
+        onTap: _onItemTapped,
+      ),
     );
+    //   );
   }
 }

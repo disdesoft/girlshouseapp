@@ -126,108 +126,114 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        centerTitle: true,
-        title: const Text('Registrarse'),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          colors: [
-            Colors.black,
-            Color.fromARGB(255, 255, 210, 210),
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        )),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 50,
-                ),
-                const SizedBox(
-                    width: 120,
-                    height: 120,
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage('assets/logogirl.png'),
-                      backgroundColor: Color.fromARGB(255, 255, 210, 210),
-                    )),
-                const SizedBox(
-                  height: 80,
-                ),
-                Form(
-                  key: _claveFormulario,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          // pendiente revisar la validación
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Por favor ingrese correo';
-                            }
-                            if (!RegExp(
-                                    r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
-                                .hasMatch(value)) {
-                              return 'Por favor, ingresa un correo electrónico válido';
-                            }
-                            return null;
-                          },
-                          controller: _emailController,
-                          decoration: const InputDecoration(
-                            labelText: 'Correo electrónico',
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.of(context).popUntil((route) => route.isFirst);
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          centerTitle: true,
+          title: const Text('Registrarse'),
+        ),
+        body: Container(
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+            colors: [
+              Colors.black,
+              Color.fromARGB(255, 255, 210, 210),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          )),
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  const SizedBox(
+                      width: 120,
+                      height: 120,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('assets/logogirl.png'),
+                        backgroundColor: Color.fromARGB(255, 255, 210, 210),
+                      )),
+                  const SizedBox(
+                    height: 80,
+                  ),
+                  Form(
+                    key: _claveFormulario,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            // pendiente revisar la validación
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Por favor ingrese correo';
+                              }
+                              if (!RegExp(
+                                      r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+                                  .hasMatch(value)) {
+                                return 'Por favor, ingresa un correo electrónico válido';
+                              }
+                              return null;
+                            },
+                            controller: _emailController,
+                            decoration: const InputDecoration(
+                              labelText: 'Correo electrónico',
+                            ),
                           ),
-                        ),
-                        TextFormField(
-                          keyboardType: TextInputType.visiblePassword,
-                          // pendiente revisar la validación
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Por favor ingrese contraseña';
-                            } else if (value.length < 8) {
-                              return 'La contraseña debe tener al menos 8 caracteres';
-                            }
-                            return null;
-                          },
-                          controller: _passwordController,
-                          obscureText: true,
-                          decoration: const InputDecoration(
-                            labelText: 'Contraseña',
+                          TextFormField(
+                            keyboardType: TextInputType.visiblePassword,
+                            // pendiente revisar la validación
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Por favor ingrese contraseña';
+                              } else if (value.length < 8) {
+                                return 'La contraseña debe tener al menos 8 caracteres';
+                              }
+                              return null;
+                            },
+                            controller: _passwordController,
+                            obscureText: true,
+                            decoration: const InputDecoration(
+                              labelText: 'Contraseña',
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-
-                const SizedBox(height: 32),
-                OutlinedButton(
-                  onPressed: _registerWithEmail,
-                  child: const Text(
-                    'Registrarse',
-                    style: TextStyle(
-                      color: Colors.white,
+    
+                  const SizedBox(height: 32),
+                  OutlinedButton(
+                    onPressed: _registerWithEmail,
+                    child: const Text(
+                      'Registrarse',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 200),
-                // OutlinedButton(onPressed: (){
-                //   Navigator.pushReplacementNamed(context, '/Home');
-                // }, child: const Text('Entrar como invitado', style: TextStyle(
-                //   color: Colors.white,
-                // ),),)
-                // ElevatedButton(
-                //   onPressed: _registerWithGoogle,
-                //   child: const Text('Registrarse con Google'),
-                // ),
-              ],
+                  const SizedBox(height: 200),
+                  // OutlinedButton(onPressed: (){
+                  //   Navigator.pushReplacementNamed(context, '/Home');
+                  // }, child: const Text('Entrar como invitado', style: TextStyle(
+                  //   color: Colors.white,
+                  // ),),)
+                  // ElevatedButton(
+                  //   onPressed: _registerWithGoogle,
+                  //   child: const Text('Registrarse con Google'),
+                  // ),
+                ],
+              ),
             ),
           ),
         ),

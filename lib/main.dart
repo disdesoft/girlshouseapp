@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:girlshouse/admin.dart';
+import 'package:girlshouse/catalogo.dart';
 import 'package:girlshouse/favoritas.dart';
 import 'package:girlshouse/home.dart';
 import 'package:girlshouse/ingresar.dart';
@@ -50,6 +51,7 @@ class _MyAppState extends State<MyApp> {
         '/Home': (context) => const Home(),
         '/RecPass': (context) => const RecPass(),
         '/Favoritas': (context) => const Favoritas(),
+        '/Catalogo': (context) => const Catalogo(),
       },
     );
   }
