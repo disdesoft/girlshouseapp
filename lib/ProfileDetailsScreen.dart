@@ -55,202 +55,213 @@ class ProfileDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Stack(children: [
-        Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Colors.black,
-              Color.fromARGB(255, 255, 210, 210),
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          )),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 100,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => FullScreenImage(imageUrl: imageUrl),
-                        ));
-                  },
-                  child: CircleAvatar(
-                    radius: 51,
-                    backgroundColor: Colors.white,
-                    child: CircleAvatar(
-                      radius: 50,
-                      backgroundImage: NetworkImage(imageUrl),
-                      backgroundColor: const Color.fromARGB(255, 255, 210, 210),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  name,
-                  style: const TextStyle(
-                    color: Color.fromARGB(255, 255, 210, 210),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18,
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  description,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 12,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                        child: Column(
-                      children: [
-                        const Text(
-                          'Servicio',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w200,
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          '\$$price',
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    )),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(children: [
+              Container(
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                  colors: [
+                    Colors.black,
+                    Color.fromARGB(255, 255, 210, 210),
                   ],
-                ),
-                const SizedBox(
-                  height: 2,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 60,
-                      height: 20,
-                      child: OutlinedButton(
-                          onPressed: () {},
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            shadowColor: Colors.white,
-                            side: const BorderSide(
-                                width: 1,
-                                color: Color.fromARGB(255, 255, 210, 210)),
-                          ),
-                          child: const Icon(
-                            Icons.favorite,
-                            color: Color.fromARGB(255, 255, 210, 210),
-                            size: 12,
-                          )),
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    SizedBox(
-                      height: 20,
-                      width: 60,
-                      child: OutlinedButton(
-                        onPressed: () {
-                          _makePhoneCall;
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 100,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => FullScreenImage(imageUrl: imageUrl),
+                          ));
                         },
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          shadowColor: Colors.white,
-                          side: const BorderSide(width: 1, color: Colors.green),
-                        ),
-                        child: const Icon(
-                          Icons.message_outlined,
-                          color: Colors.green,
-                          size: 12,
+                        child: CircleAvatar(
+                          radius: 51,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundImage: NetworkImage(imageUrl),
+                            backgroundColor:
+                                const Color.fromARGB(255, 255, 210, 210),
+                          ),
                         ),
                       ),
-                    )
-                  ],
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(0.1),
-                  child: Divider(
-                    height: 5,
-                    thickness: 0.6,
-                    //color: Colors.white,
-                  ),
-                ),
-                Expanded(
-                    child: Center(
-                  child: StreamBuilder<QuerySnapshot>(
-                      stream: FirebaseFirestore.instance
-                          .collection('profiles')
-                          .snapshots(),
-                      builder: (context, snapshot) {
-                        if (!snapshot.hasData) {
-                          return const Center(
-                              child: CircularProgressIndicator());
-                        }
-                        // final profiles = snapshot.data!.docs;
-                        return GridView.builder(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        name,
+                        style: const TextStyle(
+                          color: Color.fromARGB(255, 255, 210, 210),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        description,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 12,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                              child: Column(
+                            children: [
+                              const Text(
+                                'Servicio',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w200,
+                                  fontSize: 12,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                '\$$price',
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          )),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 60,
+                            height: 20,
+                            child: OutlinedButton(
+                                onPressed: () {},
+                                style: OutlinedButton.styleFrom(
+                                  foregroundColor: Colors.white,
+                                  shadowColor: Colors.white,
+                                  side: const BorderSide(
+                                      width: 1,
+                                      color:
+                                          Color.fromARGB(255, 255, 210, 210)),
+                                ),
+                                child: const Icon(
+                                  Icons.favorite,
+                                  color: Color.fromARGB(255, 255, 210, 210),
+                                  size: 12,
+                                )),
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          SizedBox(
+                            height: 20,
+                            width: 60,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                // ignore: deprecated_member_use
+                                launch("https://wa.link/pzpw5r");
+                              },
+                              style: OutlinedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                shadowColor: Colors.white,
+                                side: const BorderSide(
+                                    width: 1, color: Colors.green),
+                              ),
+                              child: const Icon(
+                                Icons.message_outlined,
+                                color: Colors.green,
+                                size: 12,
+                              ),
                             ),
-                            itemCount: fotos.length,
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).push(
-                                      MaterialPageRoute(
+                          )
+                        ],
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.all(0.1),
+                        child: Divider(
+                          height: 5,
+                          thickness: 0.6,
+                          //color: Colors.white,
+                        ),
+                      ),
+                      StreamBuilder<QuerySnapshot>(
+                          stream: FirebaseFirestore.instance
+                              .collection('profiles')
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            }
+                            // final profiles = snapshot.data!.docs;
+                            return GridView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 8),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                ),
+                                itemCount: fotos.length,
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
                                         builder: (_) => FullScreenImage(
                                             imageUrl: fotos[index]),
                                       ));
-                                },
-                                child: Card(
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 2, vertical: 2),
-                                  semanticContainer: true,
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  elevation: 5,
-                                  child: Image.network(
-                                    fotos[index],
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              );
-                            });
-                      }),
-                ))
-              ],
-            ),
-          ),
+                                    },
+                                    child: Card(
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 2, vertical: 2),
+                                      semanticContainer: true,
+                                      clipBehavior:
+                                          Clip.antiAliasWithSaveLayer,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
+                                      elevation: 5,
+                                      child: Image.network(
+                                        fotos[index],
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  );
+                                });
+                          })
+                    ],
+                  ),
+                ),
+              ),
+            ]),
+          ],
         ),
-      ]),
+      ),
     );
   }
 }
@@ -276,86 +287,7 @@ class FullScreenImage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 60),
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.3),
-              ),
-              child: const Text('Llamar'),
-            ),
-          ],
-        )
       ]),
     ));
-  }
-}
-//         Column(
-//           children: [
-//             GestureDetector(
-//               onTap: () {
-//                 Navigator.pop(context);
-//               },
-//               child: Column(
-//                 children: [
-//                   Stack(
-//                     children: [
-//                       const Center(
-//                         child: SizedBox(
-//                           height: 40,
-//                         ),
-//                       ),
-//                       Center(
-//                       child: Column(
-//                         children: [
-//                           const SizedBox(
-//                             height: 100,
-//                           ),
-//                           Hero(
-//                             tag: imageUrl,
-//                             child: Column(
-//                               children: [
-//                                 Image.network(imageUrl,
-//                                 fit: BoxFit.cover,
-//                                 ),
-//                                 const SizedBox(
-//                                   height: 50,
-//                                 ),
-//                                 OutlinedButton(
-//                                   onPressed: () {
-//                                     Navigator.pop(context);
-//                                   },
-//                                   child: const Text(
-//                                     'Atras',
-//                                     style: TextStyle(color: Colors.white),
-//                                   ),
-//                                 ),
-//                               ],
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                   ]),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-_makePhoneCall(String phone) async {
-  String url = phone;
-  // ignore: deprecated_member_use
-  if (await canLaunch(url)) {
-    // ignore: deprecated_member_use
-    await launch(url);
-  } else {
-    throw 'No se puede hacer la llamada a $url';
   }
 }

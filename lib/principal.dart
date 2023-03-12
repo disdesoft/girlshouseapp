@@ -129,7 +129,7 @@ class Principal extends StatelessWidget {
                   ),
 
                   const SizedBox(
-                    height: 200,
+                    height: 100,
                   ),
                   const Text('Todos los derechos reservados'),
                   GestureDetector(
@@ -144,7 +144,7 @@ class Principal extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 150,
+                    height: 120,
                   ),
                 ],
               )),

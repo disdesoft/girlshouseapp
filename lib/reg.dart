@@ -120,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
         );
       }
     } catch (e) {
-      print(e);
+      
     }
   }
 

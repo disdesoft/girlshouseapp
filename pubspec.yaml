@@ -38,9 +38,10 @@ dependencies:
   firebase_core: ^2.6.1
   cloud_firestore: ^4.4.2
   firebase_database: ^10.0.14
-  url_launcher: ^6.0.3
+  url_launcher: ^6.1.10
   firebase_auth: ^4.2.9
   google_sign_in: ^6.0.2
+  carousel_slider: ^4.2.1
   
   #intl: ^0.18.0
 

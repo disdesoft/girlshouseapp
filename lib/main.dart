@@ -8,6 +8,7 @@ import 'package:girlshouse/principal.dart';
 import 'package:girlshouse/rec_pass.dart';
 import 'package:flutter/services.dart';
 
+
 //importaciones firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'package:girlshouse/reg.dart';
