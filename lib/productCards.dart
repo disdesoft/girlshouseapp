@@ -1,21 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ProductCards extends StatelessWidget {
+class ProductCards extends StatefulWidget {
   const ProductCards({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
+  _ProductCardsState createState() => _ProductCardsState();
+}
+
+class _ProductCardsState extends State<ProductCards> {
+  final List<Map<String, dynamic>> _dataList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _getDataFromFirebase();
+  }
+
+  void _getDataFromFirebase() {
+    FirebaseFirestore.instance.collection('mi_coleccion').get().then((querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        _dataList.add(doc.data());
+      });
+      setState(() {});
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-      semanticContainer: true,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Lista horizontal con tarjetas y datos de Firebase'),
       ),
-      elevation: 5,
-      child: Image.network(
-        'https://fabianvalero.000webhostapp.com/images/avatar.jpg',
-        fit: BoxFit.cover,
+      body: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: _dataList.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: Column(
+              children: [
+                Image.network(_dataList[index]['imagen']),
+                Text(_dataList[index]['titulo']),
+                Text(_dataList[index]['descripcion']),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

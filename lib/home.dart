@@ -40,7 +40,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const List<Widget> _widgetOptions = <Widget>[
     Catalogo(),
     Favoritas(),
-    Bar(),
+    ProductCards(),
   ];
 
   void _onItemTapped(int index) {

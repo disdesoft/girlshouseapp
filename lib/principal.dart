@@ -62,6 +62,11 @@ class Principal extends StatelessWidget {
           ),
           body: Container(
             decoration: const BoxDecoration(
+                // image: DecorationImage(
+                //   image: NetworkImage(
+                //     'https://firebasestorage.googleapis.com/v0/b/girlshouseapp.appspot.com/o/girl8%2Fgirl8%20(4).jpeg?alt=media&token=4ab51878-0e3f-4900-8243-1989f891f97e'),
+                //     fit: BoxFit.cover,
+                //     ),
                 gradient: LinearGradient(
               colors: [
                 Colors.black,
